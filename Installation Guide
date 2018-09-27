@@ -1,0 +1,80 @@
+			Install JAVA on ubuntu
+			=======================
+
+1. sudo add-apt-repository ppa:linuxuprising/java
+2.sudo apt-get update
+3.sudo apt-get install oracle-java8-installer
+4.sudo apt install oracle-java8-set-default
+5.java --version or javac -version
+
+				Install jenkins
+				===============
+
+First, we'll add the repository key to the system.
+1.wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+##comment##
+When the key is added, the system will return OK. Next, we'll append the Debian package repository address to the server's sources.list:
+2.echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+##When both of these are in place, we'll run update so that apt-get will use the new repository:
+3.sudo apt-get update
+##Finally, we'll install Jenkins and its dependencies, including Java:
+4.sudo apt-get install jenkins
+5.sudo systemctl start jenkins
+6.sudo systemctl status jenkins
+7.sudo ufw allow 8080
+8.sudo ufw enable
+9.sudo ufw allow OpenSSH
+
+			Jenkins installation is done 
+
+forgot password jenkins:
+go to /var/libconfig.xml
+look for below tag
+<useSecurity>true</useSecurity>
+
+make it false... u r good to go
+
+				Install MySQL server 
+				=====================
+
+1.sudo apt-get update
+2.sudo apt-get install mysql-server
+3.sudo mysql_secure_installation
+4.sudo systemctl start mysql
+5.sudo systemctl status mysql.service
+6.sudo mysqladmin -p -u root version
+7.login to mysql as sudo mysql
+
+					Install Git
+					===========
+
+1.sudo apt-get update
+2.sudo apt-get install git
+3.git config --global user.name "jnan1993"
+4.git config --global user.email "jnan.mahalik@gmail.com"
+5.git config --list
+6.nano ~/.gitconfig 
+
+ 				working with Git
+				----------------
+1.mkdir -p git/jnan ;cd ~/git/jnan ##creating workspace for git Env
+2.git init ##intialize git on that workspace
+3.touch file1 ##create any file like file1
+4.git add file name ##add that file 
+5.git commit -m "Initial commit " -a or file_name ##save files in the workspace 
+6.Create account or signup on GitHub GUI
+7.git add origin master URL(https://github.com/jnan1993/)
+8.git pull URL
+9.git clone URL
+10.git push origin master ##origin is the master branch, file are pushed into it
+
+			working with branches 
+			---------------------
+1.git branch -a ##shows all teh available branches 
+2.git checkout -b Newbranch_name ##creates a new branch 
+3.git checkout Branch_name ##points to the checked out branch
+4.touch any_fil_name ##create file as you want
+5.git add filename
+6.git commit -m "message" file_name
+7.git merge file_name #fire this command by staying at the target branch not the source
+8.git push
